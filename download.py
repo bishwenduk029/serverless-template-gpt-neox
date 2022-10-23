@@ -9,9 +9,7 @@ import torch
 def download_model():
     # do a dry run of loading the huggingface model, which will download weights
     print("downloading model...")
-    GPTNeoXForCausalLM.from_pretrained(
-        "EleutherAI/gpt-neox-20b", revision="float16", torch_dtype=torch.float16, low_cpu_mem_usage=True
-    )
+    GPTNeoXForCausalLM.from_pretrained("EleutherAI/gpt-neox-20b").half().cuda()
     print("done")
 
     print("downloading tokenizer...")
